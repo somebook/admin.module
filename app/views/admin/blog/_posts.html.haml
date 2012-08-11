@@ -1,0 +1,5 @@
+- (@posts || posts).each do |post|
+  = render 'post', post: post
+.ajax-pagination
+  = image_tag "matsuev/ajax-loader.gif", class: "loader"
+  = will_paginate((@posts || posts), page_links: false, container: false, previous_label: "", next_label: t('front.matsuev.blog.more'), params: {stream: @stream || stream}, :renderer => WillPaginate::ActionView::LinkRenderer) unless (@posts || posts).empty?

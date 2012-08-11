@@ -1,0 +1,27 @@
+%article.post
+  %time
+    %em= @post.created_at.day
+    = t("months.m#{@post.created_at.month.to_s}")
+  - content = @post.contents.for_shard_language(@current_shard_language).first
+  %h2
+    = content.title
+    - if content.tags.include? @review_tag
+      %span.label-review= @review_tag.name
+  - unless content.photos.empty?
+    .fotorama{ "data-width" => 640, "data-height" => 480 }
+      -content.photos.each do |photo|
+        = image_tag photo.url
+  - unless content.videos.empty?
+    .videos
+      - content.videos.each do |video|
+        - if video.youtube?
+          %iframe.video{ width: "580", height: "462", src: "http://www.youtube.com/embed/#{video.youtube_id}", frameborder: "0", allowfullscreen: true }
+        - else
+          %video{ id: "video_#{video.id}", class: "video-js vjs-default-skin", controls: true, preload: "auto", width: "580", height: "328", :"data-setup" => '{}' }
+            %source{ src: video.url(false, "mp4"), type: 'video/mp4' }
+            %source{ src: video.url(false, "webm"), type: 'video/webm' }
+  %p= raw content.uncut
+  = render partial: 'front/matsuev/shared/tag_cloud', locals: { tags: content.tags.misc }
+  = render 'shared/share_buttons'
+  = render partial: 'shared/commentatr_comments', locals: { entry_id: content.commentatr_hash, lang: @current_shard_language.language.code }
+  = stylesheet_link_tag "matsuev/comments"
