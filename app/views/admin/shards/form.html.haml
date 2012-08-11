@@ -1,0 +1,10 @@
+= form_for [:admin, @shard], html: { class: %w(form-horizontal) } do |shard_form|
+  %fieldset
+    %legend= @form_legend
+    = present @shard, :shard_form_presenter, shard_form do |p|
+      = p.errors
+      = p.name
+      = p.gem_name
+      = p.author_features
+      = p.master_features
+      = p.actions back: admin_shards_path

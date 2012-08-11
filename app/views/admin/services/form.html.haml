@@ -1,0 +1,9 @@
+= form_for [:admin, @service], html: { class: %w(form-horizontal) } do |service_form|
+  %fieldset
+    %legend= @form_legend
+    = present @service, :service_form_presenter, service_form do |p|
+      = p.errors
+      = p.name
+      = p.code
+      = p.password_auth
+      = p.actions back: admin_services_path

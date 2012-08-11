@@ -1,0 +1,21 @@
+%h1= translate('admin.service.listing')
+
+= render partial: "shared/flash_messages"
+
+= link_to translate('admin.service.new'), new_admin_service_path, class: %w(btn)
+%br
+%br
+
+%table.table.table-striped
+  %tr
+    %th= Service.human_attribute_name(:name)
+    %th= Service.human_attribute_name(:code)
+    %th= translate('global.actions')
+
+  - @services.each do |service|
+    %tr
+      %td= service.name
+      %td= service.code
+      %td
+        = link_to translate('global.edit'), edit_admin_service_path(service), class: %w(btn btn-small)
+        = link_to translate('global.destroy'), [:admin, service], :confirm => 'Are you sure?', :method => :delete, class: %w(btn btn-small btn-danger)

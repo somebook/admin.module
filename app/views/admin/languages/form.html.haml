@@ -1,0 +1,8 @@
+= form_for [:admin, @language], html: { class: %w(form-horizontal) } do |language_form|
+  %fieldset
+    %legend= @form_legend
+    = present @language, :language_form_presenter, language_form do |p|
+      = p.errors
+      = p.code
+      = p.name
+      = p.actions back: admin_languages_path

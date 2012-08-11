@@ -1,0 +1,19 @@
+%h1= translate('admin.shard_languages.listing')
+
+= render partial: "shared/flash_messages"
+
+= link_to translate('admin.language.new'), new_admin_shard_shard_language_path(@shard), class: %w(btn)
+%br
+
+%table.table.table-striped
+  %tr
+    %th= Language.model_name.human#attribute_name(:name)
+    %th= t('global.actions')
+
+  - @shard.shard_languages.each do |sl|
+    %tr
+      %td{:class => "name"}
+        = "#{sl.language.name} (#{sl.domain})"
+      %td{:class => "operations"}
+        = link_to t('global.edit'),  edit_admin_shard_shard_language_path(@shard,sl), class: %w(btn btn-small)
+        = link_to t('global.destroy'),  [:admin,@shard,sl], :confirm => 'Are you sure?', :method => :delete, class: %w(btn btn-small btn-danger)
