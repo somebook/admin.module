@@ -1,16 +1,16 @@
 class Admin::LanguagesController < Admin::SpaceController
+  load_and_authorize_resource
+  # TODO: fix this stuff - it's broken some times
+
   # GET /languages
   # GET /languages.json
-  #TODO fix this stuff - it's broken some times
-  load_and_authorize_resource
   def index
-    @languages = Language.all#where(user_id: current_user.id)
+    @languages = Language.all # where(user_id: current_user.id)
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @languages }
     end
-    #ap @facebook_session
   end
 
   # GET /languages/1

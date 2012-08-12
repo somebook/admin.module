@@ -1,4 +1,4 @@
-= form_for [:admin,@shard, @shard_language], html: { class: %w(form-horizontal) } do |language_form|
+= form_for [@shard, @shard_language], html: { class: %w[ form-horizontal ] } do |language_form|
   %fieldset
     %legend= @form_legend
     = present @shard_language, :shard_language_form_presenter, language_form do |p|
@@ -7,4 +7,4 @@
       = p.domain_aliases
       = p.commentatr_token
       = p.language_id @languages
-      = p.actions back: admin_shard_shard_languages_path
+      = p.actions back: shard_shard_languages_path

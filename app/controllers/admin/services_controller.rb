@@ -1,5 +1,6 @@
 class Admin::ServicesController < Admin::SpaceController
   load_and_authorize_resource
+
   # GET /services
   # GET /services.json
   def index

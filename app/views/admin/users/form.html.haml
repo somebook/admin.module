@@ -1,4 +1,4 @@
-= form_for [:admin, @user], html: { class: %w(form-horizontal) } do |user_form|
+= form_for @user, html: { class: %w[ form-horizontal ] } do |user_form|
   %fieldset
     %legend= @form_legend
     = present @user, :user_form_presenter, user_form do |p|
@@ -7,4 +7,4 @@
       = p.password
       = p.password_confirmation
       = p.roles
-      = p.actions back: admin_users_path
+      = p.actions back: users_path

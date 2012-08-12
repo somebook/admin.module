@@ -1,19 +1,22 @@
-%h1= translate('admin.language.listing')
+%h1= t("admin.language.listing")
 
 = render partial: "shared/flash_messages"
 
-= link_to translate('admin.language.new'), new_admin_language_path, class: %w(btn)
+= link_to t("admin.language.new"), new_language_path, class: %w[ btn ]
 %br
 %br
 
 %table.table.table-striped
   %tr
-    %th= Language.model_name.human#attribute_name(:name)
-    %th= t('global.actions')
+    %th= Language.model_name.human
+    %th= t("global.actions")
 
   - @languages.each do |language|
     %tr
       %td= language.name
       %td
-        = link_to t('global.edit'), edit_admin_language_path(language), class: %w(btn btn-small)
-        = link_to t('global.destroy'), [:admin, language], :confirm => 'Are you sure?', :method => :delete, class: %w(btn btn-small btn-danger)
+        = link_to t("global.edit"), edit_language_path(language), class: %w[ btn btn-small ]
+        = link_to t("global.destroy"), language,
+          data: { confirm: t("global.delete_confirm") },
+          method: :delete,
+          class: %w[ btn btn-small btn-danger ]

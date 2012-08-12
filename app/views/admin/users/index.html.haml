@@ -1,8 +1,8 @@
-%h1= translate('admin.user.listing')
+%h1= t("admin.user.listing")
 
 = render partial: "shared/flash_messages"
 
-= link_to t('admin.user.new'), new_admin_user_path, class: %w(btn)
+= link_to t("admin.user.new"), new_user_path, class: %w[ btn ]
 %br
 %br
 
@@ -10,11 +10,11 @@
   %tr
     %th= User.human_attribute_name(:email)
     %th= Role.model_name.human
-    %th= t('global.actions')
+    %th= t("global.actions")
 
   - @users.each do |user|
     %tr
-      %td= link_to user.email, edit_admin_user_path(user)
+      %td= link_to user.email, edit_user_path(user)
       %td
         - user.assignments.each do |a|
           = a.role.name
@@ -24,5 +24,8 @@
             shard
           %br
       %td
-        = link_to translate('global.edit'), edit_admin_user_path(user), class: %w(btn btn-small)
-        = link_to translate('global.destroy'), [:admin, user], :confirm => 'Are you sure?', :method => :delete, class: %w(btn btn-small btn-danger)
+        = link_to t("global.edit"), edit_user_path(user), class: %w[ btn btn-small ]
+        = link_to t("global.destroy"), user,
+          data: { confirm: t("global.delete_confirm") },
+          method: :delete,
+          class: %w[ btn btn-small btn-danger ]

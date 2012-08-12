@@ -1,22 +1,25 @@
-%h1= translate('admin.shard.listing')
+%h1= t("admin.shard.listing")
 
 = render partial: "shared/flash_messages"
 
-= link_to translate('admin.shard.new'), new_admin_shard_path, class: %w(btn)
+= link_to t("admin.shard.new"), new_shard_path, class: %w[ btn ]
 %br
 %br
 
 %table.table.table-striped
   %tr
-    %th= Shard.model_name.human#attribute_name(:name)
-    %th= t('global.actions')
+    %th= Shard.model_name.human
+    %th= t("global.actions")
 
   - @shards.each do |shard|
     %tr
-      %td{:class => "name"}
+      %td{ class: "name" }
         = shard.name
-      %td{:class => "operations"}
-        = link_to t('admin.shard.users'), admin_shard_shard_users_path(shard), class: %w(btn btn-small)
-        = link_to t('admin.shard.languages'), admin_shard_shard_languages_path(shard), class: %w(btn btn-small)
-        = link_to t('global.edit'), edit_admin_shard_path(shard), class: %w(btn btn-small)
-        = link_to t('global.destroy'), [:admin, shard], :confirm => 'Are you sure?', :method => :delete, class: %w(btn btn-small btn-danger)
+      %td{ class: "operations"}
+        = link_to t("admin.shard.users"), shard_shard_users_path(shard), class: %w[ btn btn-small ]
+        = link_to t("admin.shard.languages"), shard_shard_languages_path(shard), class: %w[ btn btn-small ]
+        = link_to t("global.edit"), edit_shard_path(shard), class: %w[ btn btn-small ]
+        = link_to t("global.destroy"), shard,
+          data: { confirm: t("global.delete_confirm") },
+          method: :delete,
+          class: %w[ btn btn-small btn-danger ]

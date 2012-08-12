@@ -14,4 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Rails mountable engine that provides embedded shard functionality"
 
   s.files = Dir["{app,config,lib}/**/*"] + ["README.md"]
+
+  s.add_runtime_dependency "rails"
+  s.add_runtime_dependency "devise", "2.1.2"
 end

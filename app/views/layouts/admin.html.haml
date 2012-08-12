@@ -9,12 +9,12 @@
     .navbar
       .navbar-inner.navbar-fixed-top
         .container-fluid
-          = link_to t('admin.space_title'), admin_services_path, class: "brand"
+          = link_to t("admin.space_title"), services_path, class: %w[ brand ]
           %ul.nav
-            %li= link_to Service.model_name.human, admin_services_path
-            %li= link_to Language.model_name.human, admin_languages_path
-            %li= link_to Shard.model_name.human, admin_shards_path
-            %li= link_to User.model_name.human, admin_users_path
+            %li= link_to Service.model_name.human, services_path
+            %li= link_to Language.model_name.human, languages_path
+            %li= link_to Shard.model_name.human, shards_path
+            %li= link_to User.model_name.human, users_path
           %ul.nav.secondary-nav.pull-right
             %li{ style: "margin-top: 5px" }
               .btn-group
@@ -22,13 +22,13 @@
                   %a.btn.btn-mini{ class: (l.code.to_s == I18n.locale.to_s ? "btn-info disabled" : ""), href: "?locale=#{l.code}" }= l.code
             -if author_signed_in?
               %li.dropdown
-                %a.dropdown-toggle{ :href => "#", :'data-toggle' => "dropdown" }
+                %a.dropdown-toggle{ href: "#", :"data-toggle" => "dropdown" }
                   = current_user.email
                   %b.caret
                 %ul.dropdown-menu
                   %li
-                    = link_to translate('global.sign_out'), destroy_user_session_path, :method => :delete
+                    = link_to t("global.sign_out"), destroy_user_session_path, method: :delete
             - else
               %li
-                = link_to translate('global.sign_in'), new_user_session_path
+                = link_to t("global.sign_in"), new_user_session_path
     .container= yield
