@@ -1,72 +1,50 @@
-class Admin::ShardsController < Admin::SpaceController
+module Admin
+class ShardsController < SpaceController
   load_and_authorize_resource
   #TODO fix this stuff - it's broken some times
-  # load_and_authorize_resource
-  def index
-    @shards = Shard.all#where(user_id: current_user.id)
-    @roles = Role.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @shards }
-    end
+  def index
+    @shards = Shard.all # where(user_id: current_user.id)
+    @roles = Role.all
   end
 
   def show
-    @shard = Shard.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @shard }
-    end
+    @shard = Shard.find(params[:id]) || not_found
   end
 
   def new
     @shard = Shard.new
-    @form_legend = t('admin.shard.form_legend.new')
+    @form_legend = t("admin.shard.form_legend.new")
 
-    respond_to do |format|
-      format.html { render :form }
-      format.json { render json: @shard }
-    end
+    render :form
   end
 
   def edit
     @shard = Shard.find_by_id(params[:id]) || not_found
-    @form_legend = t('admin.shard.form_legend.edit')
+    @form_legend = t("admin.shard.form_legend.edit")
 
-    respond_to do |format|
-      format.html { render :form }
-    end
+    render :form
   end
 
   def create
     @shard = Shard.new(params[:shard])
-    @form_legend = t('admin.shard.form_legend.new')
+    @form_legend = t("admin.shard.form_legend.new")
 
-    respond_to do |format|
-      if @shard.save
-        format.html { redirect_to admin_shards_path, notice: 'shard was successfully created.' }
-        format.json { render json: @shard, status: :created, location: @shard }
-      else
-        format.html { render :form }
-        format.json { render json: @shard.errors, status: :unprocessable_entity }
-      end
+    if @shard.save
+      redirect_to admin_shards_path, t("admin.shard.notice.create_success")
+    else
+      render :form
     end
   end
 
   def update
     @shard = Shard.find_by_id(params[:id]) || not_found
-    @form_legend = t('admin.shard.form_legend.edit')
+    @form_legend = t("admin.shard.form_legend.edit")
 
-    respond_to do |format|
-      if @shard.update_attributes(params[:shard])
-        format.html { redirect_to admin_shards_path, notice: 'shard was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :form }
-        format.json { render json: @shard.errors, status: :unprocessable_entity }
-      end
+    if @shard.update_attributes(params[:shard])
+      redirect_to admin_shards_path, notice: t("admin.shard.notice.update_success")
+    else
+      render :form
     end
   end
 
@@ -74,10 +52,8 @@ class Admin::ShardsController < Admin::SpaceController
     @shard = Shard.find_by_id(params[:id]) || not_found
     @shard.destroy
 
-    respond_to do |format|
-      format.html { redirect_to admin_shards_path, notice: 'shard was successfully deleted.' }
-      format.json { head :ok }
-    end
+    redirect_to admin_shards_path, notice: t("admin.shard.notice.delete_success")
   end
 
+end
 end

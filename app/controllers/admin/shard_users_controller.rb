@@ -1,38 +1,38 @@
 class Admin::ShardUsersController < Admin::SpaceController
-  load_and_authorize_resource :class => 'Assignment'
+  load_and_authorize_resource class: :Assignment
+
   def index
     @shard = Shard.find_by_id(params[:shard_id]) || not_found
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @shards }
-    end
   end
+
   def add
     @shard = Shard.find_by_id(params[:shard_id]) || not_found
-    note='User not found or already exists'
+    notice = t("admin.shard_user.notice.add_fail")
+
     Role.shard_roles.where("id in (?)", params[:role_ids]).each do |role|
-      if(u=User.find_by_email(params[:user_email]))
-        if(!u.has_role_for_shard?(role,@shard))
-          note = 'User added'
-          a=u.assignments.new
-          a.role= role
-          a.shard = @shard
-          a.save!
-        end
+      if user = User.find_by_email(params[:user_email])) and !user.has_role_for_shard?(role, @shard)
+        notice = t("admin.shard_user.notice.add_success")
+        user.assignments.create(
+          role: role,
+          shard: @shard
+        )
       end
     end
-    respond_to do |format|
-      format.html { redirect_to admin_shard_shard_users_path(@shard), notice: note }
-    end
+
+    redirect_to admin_shard_shard_users_path(@shard), notice: notice
   end
+
   def revoke
     @shard = Shard.find_by_id(params[:shard_id]) || not_found
-    assignment=@shard.assignments.find(params[:assignment_id]) || not_found
-    if(assignment.destroy)
-      note = 'Assignment revoked'
+    assignment = @shard.assignments.find(params[:assignment_id]) || not_found
+    notice = t("admin.shard_user.notice.revoke_fail")
+
+    if assignment.destroy
+      notice = t("admin.shard_user.notice.revoke_success")
     end
-    respond_to do |format|
-      format.html { redirect_to admin_shard_shard_users_path(@shard), notice: note }
-    end
+
+    redirect_to admin_shard_shard_users_path(@shard), notice: notice
   end
+
+end
 end

@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ["magnolia_fan@me.com"]
   s.homepage    = "https://github.com/somebook/admin.module"
   s.summary     = "Somebook Admin module"
-  s.description = "Rails mountable engine that provides embedded shard functionality"
+  s.description = "Rails mountable engine that provides admin functionality"
 
   s.files = Dir["{app,config,lib}/**/*"] + ["README.md"]
 
