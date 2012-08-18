@@ -1,4 +1,69 @@
 en:
-  front:
-    admin:
-      foo: bar
+  admin:
+    space_title: Admin area
+    service:
+      form_legend:
+        new: New Service
+        edit: Editing Service
+      listing: Services
+      new: Add Service
+      notice:
+        create_success: Service was successfully created
+        create_fail: Failed to create service
+        update_success: Service was successfully updated
+        update_fail: Failed to update service
+        delete_success: Service was successfully deleted
+        delete_fail: Failed to delete service
+    language:
+      form_legend:
+        new: New Language
+        edit: Editing Language
+      listing: Languages
+      new: Add Language
+      notice:
+        create_success: Language was successfully created
+        create_fail: Failed to create language
+        update_success: Language was successfully updated
+        update_fail: Failed to update language
+        delete_success: Language was successfully deleted
+        delete_fail: Failed to delete language
+    shard:
+      form_legend:
+        new: New Shard
+        edit: Editing Shard
+      listing: Shards
+      new: Add Shard
+      notice:
+        create_success: Shard was successfully created
+        create_fail: Failed to create shard
+        update_success: Shard was successfully updated
+        update_fail: Failed to update shard
+        delete_success: Shard was successfully deleted
+        delete_fail: Failed to delete shard
+      languages: Languages
+    shard_language:
+      form_legend:
+        new: New Shard Language
+        edit: Editing Shard Language
+      listing: Shard Languages
+      new: Add Shard Language
+      notice:
+        create_success: Shard language was successfully created
+        create_fail: Failed to create shard language
+        update_success: Shard language was successfully updated
+        update_fail: Failed to update shard language
+        delete_success: Shard language was successfully deleted
+        delete_fail: Failed to delete shard language
+    shard_user:
+      form_legend:
+        new: New Shard User
+        edit: Editing Shard User
+      listing: Shard Users
+      new: Add Shard User
+      notice:
+        create_success: Shard user was successfully created
+        create_fail: Failed to create shard user
+        update_success: Shard user was successfully updated
+        update_fail: Failed to update shard user
+        delete_success: Shard user was successfully deleted
+        delete_fail: Failed to delete shard user

@@ -1,4 +1,69 @@
-ru:
-  front:
-    admin:
-      foo: bar
+ ru:
+  admin:
+    space_title: Админка
+    service:
+      form_legend:
+        new: Новый сервис
+        edit: Редактирование сервиса
+      listing: Сервисы
+      new: Добавить сервис
+      notice:
+        create_success: Сервис успешно создан
+        create_fail: Не удалось создать сервис
+        update_success: Сервис успешно изменен
+        update_fail: Не удалось изменить сервис
+        delete_success: Сервис успешно удален
+        delete_fail: Не удалось удалить сервис
+    language:
+      form_legend:
+        new: Новый язык
+        edit: Редактирование языка
+      listing: Языки
+      new: Добавить язык
+      notice:
+        create_success: Язык успешно создан
+        create_fail: Не удалось создать язык
+        update_success: Язык успешно изменен
+        update_fail: Не удалось изменить язык
+        delete_success: Язык успешно удален
+        delete_fail: Не удалось удалить язык
+    shard:
+      form_legend:
+        new: Новый сайт
+        edit: Редактирование сайта
+      listing: Сайты
+      new: Добавить сайт
+      notice:
+        create_success: Сайт успешно создан
+        create_fail: Не удалось создать сайт
+        update_success: Сайт успешно изменен
+        update_fail: Не удалось изменить сайт
+        delete_success: Сайт успешно удален
+        delete_fail: Не удалось удалить сайт
+      languages: Языки
+    shard_language:
+      form_legend:
+        new: Новый язык сайта
+        edit: Редактирование языка сайта
+      listing: Языки сайта
+      new: Добавить язык сайта
+      notice:
+        create_success: Язык сайта успешно создан
+        create_fail: Не удалось создать язык сайта
+        update_success: Язык сайта успешно изменен
+        update_fail: Не удалось изменить язык сайта
+        delete_success: Язык сайта успешно удален
+        delete_fail: Не удалось удалить язык сайта
+    shard_user:
+      form_legend:
+        new: Новый пользователь сайта
+        edit: Редактирование пользователя сайта
+      listing: Пользователи сайта
+      new: Добавить пользователя сайта
+      notice:
+        create_success: Пользователь сайта успешно создан
+        create_fail: Не удалось создать пользователя сайта
+        update_success: Пользователь сайта успешно изменен
+        update_fail: Не удалось изменить пользователя сайта
+        delete_success: Пользователь сайта успешно удален
+        delete_fail: Не удалось удалить пользователя сайта
