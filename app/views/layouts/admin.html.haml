@@ -1,9 +1,9 @@
 !!!
 %html
   %head
-    %title Somebook Admin
+    %title= t("admin.space_title")
     = stylesheet_link_tag    "admin/admin"
-    = javascript_include_tag "admin/admin"
+    = javascript_include_tag "admin"
     = csrf_meta_tags
   %body
     .navbar
@@ -11,15 +11,16 @@
         .container-fluid
           = link_to t("admin.space_title"), services_path, class: %w[ brand ]
           %ul.nav
-            %li= link_to Service.model_name.human, services_path
-            %li= link_to Language.model_name.human, languages_path
-            %li= link_to Shard.model_name.human, shards_path
-            %li= link_to User.model_name.human, users_path
+            - %w[ service language shard user ].each do |section|
+              - klass = (@current_section == section ? "active" : "")
+              %li{ class: klass }= link_to t("admin.#{section}.listing"), send("#{section.pluralize}_path".to_sym)
           %ul.nav.secondary-nav.pull-right
             %li{ style: "margin-top: 5px" }
               .btn-group
                 - Language.all.each do |l|
-                  %a.btn.btn-mini{ class: (l.code.to_s == I18n.locale.to_s ? "btn-info disabled" : ""), href: "?locale=#{l.code}" }= l.code
+                  - btn_class = l.code.to_s == I18n.locale.to_s ? "btn-info disabled" : ""
+                  %a.btn.btn-mini{ class: btn_class, href: "?locale=#{l.code}" }
+                    = l.code
             -if author_signed_in?
               %li.dropdown
                 %a.dropdown-toggle{ href: "#", :"data-toggle" => "dropdown" }

@@ -1,17 +1,7 @@
-%h1= t("admin.shard_users.listing")
+%h1= t("admin.shard_user.listing")
 
 = render partial: "shared/flash_messages"
 
-= form_tag add_shard_shard_users_path(@shard) do
-  = label_tag :user_email, "Add user by email"
-  = text_field_tag :user_email
-  %br
-  = label_tag :role_ids, "as"
-  = select_tag :role_ids, options_from_collection_for_select(Role.shard_roles, "id", "name"), multiple: true
-  %br
-  = submit_tag "Add"
-= # link_to translate("admin.shard_users.add"), new_shard_shard_user_path(@shard), class: %w[ btn ]
-%br
 %br
 
 %table.table.table-striped
@@ -19,14 +9,17 @@
     %th= User.model_name.human
     %th= t("global.actions")
 
-  - @shard.assignments.each do |a|
+  - @shard_users.each do |user|
     %tr
       %td{ class: "name" }
-        = a.user.email
-        as
-        %strong= a.role.name
+        = user.email
+        &mdash;
+        = user.roles_for_shard(@shard).map{ |role| t("admin.role.#{role.name}") }.join(", ")
       %td{ class: "operations" }
-        = # link_to t("global.edit"), edit_shard_path(shard), class: %w[ btn small ]
-        = link_to t("global.revoke"), revoke_admin_shard_shard_users_path(@shard, assignment_id: a.id),
+        = link_to t("global.edit"), edit_shard_shard_user_path(@shard, user), class: %w[ btn btn-mini ]
+        = link_to t("global.destroy"), shard_shard_user_path(@shard, user.id),
           data: { confirm: t("global.delete_confirm") },
-          method: :delete, class: %w[ btn btn-small btn-danger ]
+          method: :delete,
+          class: %w[ btn btn-mini btn-danger ]
+
+= link_to t("admin.shard_user.new"), new_shard_shard_user_path, class: %w[ btn btn-primary ]

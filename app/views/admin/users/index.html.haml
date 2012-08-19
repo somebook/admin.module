@@ -2,8 +2,6 @@
 
 = render partial: "shared/flash_messages"
 
-= link_to t("admin.user.new"), new_user_path, class: %w[ btn ]
-%br
 %br
 
 %table.table.table-striped
@@ -17,15 +15,18 @@
       %td= link_to user.email, edit_user_path(user)
       %td
         - user.assignments.each do |a|
-          = a.role.name
           - if a.shard
-            of
-            = a.shard.name
-            shard
+            = t("admin.role.#{a.role.name}")
+            = t("admin.user.on_shard")
+            = a.shard.name.capitalize
+          - else
+            %strong= t("admin.role.#{a.role.name}")
           %br
       %td
-        = link_to t("global.edit"), edit_user_path(user), class: %w[ btn btn-small ]
+        = link_to t("global.edit"), edit_user_path(user), class: %w[ btn btn-mini ]
         = link_to t("global.destroy"), user,
           data: { confirm: t("global.delete_confirm") },
           method: :delete,
-          class: %w[ btn btn-small btn-danger ]
+          class: %w[ btn btn-mini btn-danger ]
+
+= link_to t("admin.user.new"), new_user_path, class: %w[ btn btn-primary ]

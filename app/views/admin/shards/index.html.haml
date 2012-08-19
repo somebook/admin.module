@@ -2,8 +2,6 @@
 
 = render partial: "shared/flash_messages"
 
-= link_to t("admin.shard.new"), new_shard_path, class: %w[ btn ]
-%br
 %br
 
 %table.table.table-striped
@@ -16,10 +14,12 @@
       %td{ class: "name" }
         = shard.name
       %td{ class: "operations"}
-        = link_to t("admin.shard.users"), shard_shard_users_path(shard), class: %w[ btn btn-small ]
-        = link_to t("admin.shard.languages"), shard_shard_languages_path(shard), class: %w[ btn btn-small ]
-        = link_to t("global.edit"), edit_shard_path(shard), class: %w[ btn btn-small ]
+        = link_to t("admin.shard.users"), shard_shard_users_path(shard), class: %w[ btn btn-mini ]
+        = link_to t("admin.shard.languages"), shard_shard_languages_path(shard), class: %w[ btn btn-mini ]
+        = link_to t("global.edit"), edit_shard_path(shard), class: %w[ btn btn-mini ]
         = link_to t("global.destroy"), shard,
           data: { confirm: t("global.delete_confirm") },
           method: :delete,
-          class: %w[ btn btn-small btn-danger ]
+          class: %w[ btn btn-mini btn-danger ]
+
+= link_to t("admin.shard.new"), new_shard_path, class: %w[ btn btn-primary ]

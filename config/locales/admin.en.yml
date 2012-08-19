@@ -1,6 +1,10 @@
 en:
   admin:
     space_title: Admin area
+    role:
+      admin: Administrator
+      master: Master
+      author: Author
     service:
       form_legend:
         new: New Service
@@ -27,6 +31,20 @@ en:
         update_fail: Failed to update language
         delete_success: Language was successfully deleted
         delete_fail: Failed to delete language
+    user:
+      form_legend:
+        new: New User
+        edit: Editing User
+      listing: Users
+      new: Add User
+      notice:
+        create_success: User was successfully created
+        create_fail: Failed to create user
+        update_success: User was successfully updated
+        update_fail: Failed to update user
+        delete_success: User was successfully deleted
+        delete_fail: Failed to delete user
+      on_shard: on shard
     shard:
       form_legend:
         new: New Shard
@@ -41,6 +59,7 @@ en:
         delete_success: Shard was successfully deleted
         delete_fail: Failed to delete shard
       languages: Languages
+      users: Users
     shard_language:
       form_legend:
         new: New Shard Language

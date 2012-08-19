@@ -1,0 +1,7 @@
+= form_for [@shard, @shard_user], html: { class: %w[ form-horizontal ] } do |shard_user_form|
+  %fieldset
+    %legend= @form_legend
+    = present @shard_user, :shard_user_form_presenter, shard_user_form do |p|
+      = p.email
+      = p.roles @roles
+      = p.actions back: shard_shard_users_path(@shard)

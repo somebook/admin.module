@@ -1,6 +1,10 @@
  ru:
   admin:
     space_title: Админка
+    role:
+      admin: Администратор
+      master: Мастер
+      author: Автор
     service:
       form_legend:
         new: Новый сервис
@@ -27,6 +31,20 @@
         update_fail: Не удалось изменить язык
         delete_success: Язык успешно удален
         delete_fail: Не удалось удалить язык
+    user:
+      form_legend:
+        new: Новый пользователь
+        edit: Редактирование пользователя
+      listing: Пользователи
+      new: Добавить пользователя
+      notice:
+        create_success: Пользователь успешно создан
+        create_fail: Не удалось создать пользователя
+        update_success: Пользователь успешно изменен
+        update_fail: Не удалось изменить пользователя
+        delete_success: Пользователь успешно удален
+        delete_fail: Не удалось удалить пользователя
+      on_shard: на сайте
     shard:
       form_legend:
         new: Новый сайт
@@ -41,6 +59,7 @@
         delete_success: Сайт успешно удален
         delete_fail: Не удалось удалить сайт
       languages: Языки
+      users: Пользователи
     shard_language:
       form_legend:
         new: Новый язык сайта

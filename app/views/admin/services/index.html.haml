@@ -2,8 +2,6 @@
 
 = render partial: "shared/flash_messages"
 
-= link_to t("admin.service.new"), new_service_path, class: %w[ btn ]
-%br
 %br
 
 %table.table.table-striped
@@ -17,8 +15,10 @@
       %td= service.name
       %td= service.code
       %td
-        = link_to t("global.edit"), edit_service_path(service), class: %w[ btn btn-small ]
+        = link_to t("global.edit"), edit_service_path(service), class: %w[ btn btn-mini ]
         = link_to t("global.destroy"), service,
           data: { confirm: t("global.delete_confirm") },
           method: :delete,
-          class: %w[ btn btn-small btn-danger ]
+          class: %w[ btn btn-mini btn-danger ]
+
+= link_to t("admin.service.new"), new_service_path, class: %w[ btn btn-primary ]

@@ -5,7 +5,6 @@ class ShardsController < SpaceController
 
   def index
     @shards = Shard.all # where(user_id: current_user.id)
-    @roles = Role.all
   end
 
   def show

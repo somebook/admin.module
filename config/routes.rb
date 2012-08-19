@@ -3,21 +3,13 @@ Admin::Engine.routes.draw do
   resources :users
   resources :services
   resources :shards do
-    resources :shard_users do
-      collection do
-        post 'add'
-        delete 'revoke'
-      end
-    end
-    resources :shard_languages do
-    end
+    resources :shard_users
+    resources :shard_languages
   end
-  root to: 'services#index'
+  root to: "services#index"
 
   devise_for :users,
-    path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' },
+    path_names: { sign_in: "login", sign_out: "logout", sign_up: "signup" },
     sign_out_via: [:post, :delete, :get],
-    controllers: {
-      omniauth_callbacks: "users/omniauth_callbacks",
-      registrations: "users/registrations" }
+    controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" }
 end
