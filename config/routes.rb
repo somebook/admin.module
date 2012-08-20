@@ -7,9 +7,4 @@ Admin::Engine.routes.draw do
     resources :shard_languages
   end
   root to: "services#index"
-
-  devise_for :users,
-    path_names: { sign_in: "login", sign_out: "logout", sign_up: "signup" },
-    sign_out_via: [:post, :delete, :get],
-    controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" }
 end

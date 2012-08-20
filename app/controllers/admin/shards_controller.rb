@@ -30,7 +30,7 @@ class ShardsController < SpaceController
     @form_legend = t("admin.shard.form_legend.new")
 
     if @shard.save
-      redirect_to admin_shards_path, t("admin.shard.notice.create_success")
+      redirect_to shards_path, t("admin.shard.notice.create_success")
     else
       render :form
     end
@@ -41,7 +41,7 @@ class ShardsController < SpaceController
     @form_legend = t("admin.shard.form_legend.edit")
 
     if @shard.update_attributes(params[:shard])
-      redirect_to admin_shards_path, notice: t("admin.shard.notice.update_success")
+      redirect_to shards_path, notice: t("admin.shard.notice.update_success")
     else
       render :form
     end
@@ -51,7 +51,7 @@ class ShardsController < SpaceController
     @shard = Shard.find_by_id(params[:id]) || not_found
     @shard.destroy
 
-    redirect_to admin_shards_path, notice: t("admin.shard.notice.delete_success")
+    redirect_to shards_path, notice: t("admin.shard.notice.delete_success")
   end
 
 end
