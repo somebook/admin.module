@@ -7,7 +7,7 @@ class SpaceController < ::ApplicationController
 private
 
   def authenticate_admin!
-    redirect_to "/users/login/" unless user_signed_in? && current_user.has_role?(:admin)
+    redirect_to main_app.new_user_session_path unless user_signed_in? && current_user.has_role?(:admin)
   end
 
   def set_current_section

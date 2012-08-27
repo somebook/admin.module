@@ -30,7 +30,7 @@ class ServicesController < SpaceController
     @form_legend = t("admin.service.form_legend.new")
 
     if @service.save
-      redirect_to admin_services_path, notice: t("admin.service.notice.create_success")
+      redirect_to services_path, notice: t("admin.service.notice.create_success")
     else
       render :form
     end
@@ -41,7 +41,7 @@ class ServicesController < SpaceController
     @form_legend = t("admin.service.form_legend.edit")
 
     if @service.update_attributes(params[:service])
-      redirect_to admin_services_path, notice: t("admin.service.notice.update_success")
+      redirect_to services_path, notice: t("admin.service.notice.update_success")
     else
       render :form
     end
@@ -51,7 +51,7 @@ class ServicesController < SpaceController
     @service = Service.find(params[:id])
     @service.destroy
 
-    redirect_to admin_services_path, notice: t("admin.service.notice.delete_success")
+    redirect_to services_path, notice: t("admin.service.notice.delete_success")
   end
 
 end

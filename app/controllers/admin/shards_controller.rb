@@ -30,7 +30,7 @@ class ShardsController < SpaceController
     @form_legend = t("admin.shard.form_legend.new")
 
     if @shard.save
-      redirect_to shards_path, t("admin.shard.notice.create_success")
+      redirect_to shards_path, notice: t("admin.shard.notice.create_success")
     else
       render :form
     end

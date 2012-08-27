@@ -22,7 +22,7 @@ class ShardLanguagesController < SpaceController
     @form_legend = t("admin.shard_language.form_legend.new")
 
     if shard_language.save
-      redirect_to admin_shard_shard_languages_path(@shard), notice: t("admin.shard_language.notice.create_success")
+      redirect_to shard_shard_languages_path(@shard), notice: t("admin.shard_language.notice.create_success")
     else
       render :form
     end
@@ -42,7 +42,7 @@ class ShardLanguagesController < SpaceController
     @form_legend = t("admin.shard_language.form_legend.edit")
 
     if @shard_language.update_attributes(params[:shard_language])
-      redirect_to admin_shard_shard_languages_path, notice: t("admin.shard_language.notice.update_success")
+      redirect_to shard_shard_languages_path, notice: t("admin.shard_language.notice.update_success")
     else
       render :form
     end
@@ -52,7 +52,7 @@ class ShardLanguagesController < SpaceController
     @shard = Shard.find_by_id(params[:shard_id]) || not_found
     shard_language = @shard.shard_languages.find(params[:id]) || not_found
 
-    redirect_to admin_shard_shard_languages_path(@shard), notice: t("admin.shard_language.notice.delete_success")
+    redirect_to shard_shard_languages_path(@shard), notice: t("admin.shard_language.notice.delete_success")
   end
 
 private

@@ -31,7 +31,7 @@ class UsersController < SpaceController
     if @user.save
       shard_roles = @user.all_shard_roles.clone
       @user.roles = shard_roles + Role.global_roles.find_all_by_id(params[:user][:role_ids])
-      redirect_to admin_users_path, notice: t("admin.user.notice.create_success")
+      redirect_to users_path, notice: t("admin.user.notice.create_success")
     else
       render :form
     end
@@ -49,7 +49,7 @@ class UsersController < SpaceController
     if @user.update_attributes(params[:user])
       shard_roles = @user.all_shard_roles.clone
       @user.roles = shard_roles + Role.global_roles.find_all_by_id(params[:user][:role_ids])
-      redirect_to admin_users_path, notice: t("admin.user.notice.update_success")
+      redirect_to users_path, notice: t("admin.user.notice.update_success")
     else
       render :form
     end
@@ -59,7 +59,7 @@ class UsersController < SpaceController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to admin_users_path, notice: t("admin.user.notice.delete_success")
+    redirect_to users_path, notice: t("admin.user.notice.delete_success")
   end
 
 end
