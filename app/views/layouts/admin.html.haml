@@ -6,10 +6,15 @@
     = javascript_include_tag "admin"
     = csrf_meta_tags
   %body
-    .navbar
-      .navbar-inner.navbar-fixed-top
-        .container-fluid
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
           = link_to t("admin.space_title"), services_path, class: %w[ brand ]
+<<<<<<< HEAD
           %ul.nav
             - %w[ service language shard user ].each do |section|
               - klass = (@current_section == section ? "active" : "")
@@ -32,4 +37,29 @@
             - else
               %li
                 = link_to t("global.sign_in"), main_app.new_user_session_path
+=======
+          %div.nav-collapse
+            %ul.nav
+              - %w[ service language shard user ].each do |section|
+                - klass = (@current_section == section ? "active" : "")
+                %li{ class: klass }= link_to t("admin.#{section}.listing"), send("#{section.pluralize}_path".to_sym)
+            %ul.nav.secondary-nav.pull-right
+              %li{ style: "margin-top: 5px" }
+                .btn-group
+                  - Language.all.each do |l|
+                    - btn_class = l.code.to_s == I18n.locale.to_s ? "disabled" : ""
+                    %a.btn.btn-mini{ class: btn_class, href: "?locale=#{l.code}" }
+                      = l.code
+              -if author_signed_in?
+                %li.dropdown
+                  %a.dropdown-toggle{ href: "#", :"data-toggle" => "dropdown" }
+                    = current_user.email
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li
+                      = link_to t("global.sign_out"), "/users/logout/", method: :delete
+              - else
+                %li
+                  = link_to t("global.sign_in"), new_user_session_path
+>>>>>>> navbar styles
     .container= yield

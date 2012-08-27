@@ -8,6 +8,45 @@
 body {
   padding-top: 60px;
 }
+.navbar {
+  .brand {
+    color: #ddd;
+    display: block;
+    float: left;
+    font-family: Georgia;
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1;
+    padding: 10px 20px 12px;
+    text-shadow: 0 -1px 40px #fff, 0 -1px 0 #000;
+  }
+  .nav {
+    & > li {
+      & > a {
+        padding: 9px 7px 11px;
+      }
+    }
+  }
+}
 
-.navbar-fixed-top { border-radius: 0; }
+.navbar-fixed-top { border-radius: 0;padding-left: 0;
+    padding-right: 0;}
 .navbar .btn-group .btn { padding: 2px 6px; margin: -2px 0 0; }
+
+.secondary-nav {
+  a {
+    font-size: .88em;
+  }
+}
+
+.btn-mini {
+  font-size: 11px;
+  line-height: 14px !important;
+  padding: 2px 5px !important;
+}
+.navbar-inner .btn.disabled, .navbar-inner .btn[disabled] {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(0,0,0,0.8) rgba(255,255,255,0.1) rgba(255,255,255,0.5) rgba(0,0,0,0.5);
+  color: #aaa;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.9);
+}
