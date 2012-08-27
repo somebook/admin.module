@@ -14,7 +14,6 @@
             %span.icon-bar
             %span.icon-bar
           = link_to t("admin.space_title"), services_path, class: %w[ brand ]
-<<<<<<< HEAD
           %ul.nav
             - %w[ service language shard user ].each do |section|
               - klass = (@current_section == section ? "active" : "")
@@ -35,8 +34,6 @@
                   %li
                     = link_to t("global.sign_out"), main_app.destroy_user_session_path, method: :delete
             - else
-              %li
-                = link_to t("global.sign_in"), main_app.new_user_session_path
 =======
           %div.nav-collapse
             %ul.nav
