@@ -30,7 +30,7 @@ class LanguagesController < SpaceController
     @form_legend = t("admin.language.form_legend.new")
 
     if @language.save
-      redirect_to admin_languages_path, notice: t("admin.language.notice.create_success")
+      redirect_to languages_path, notice: t("admin.language.notice.create_success")
     else
       render :form
     end
@@ -41,7 +41,7 @@ class LanguagesController < SpaceController
     @form_legend = t('admin.language.form_legend.edit')
 
     if @language.update_attributes(params[:language])
-      redirect_to admin_languages_path, notice: t("admin.language.notice.update_success")
+      redirect_to languages_path, notice: t("admin.language.notice.update_success")
     else
       render :form
     end
@@ -51,7 +51,7 @@ class LanguagesController < SpaceController
     @language = Language.find_by_id(params[:id]) || not_found
     @language.destroy
 
-    redirect_to admin_languages_path, notice: t("admin.language.notice.delete_success")
+    redirect_to languages_path, notice: t("admin.language.notice.delete_success")
   end
 
 end
