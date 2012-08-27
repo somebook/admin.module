@@ -14,27 +14,6 @@
             %span.icon-bar
             %span.icon-bar
           = link_to t("admin.space_title"), services_path, class: %w[ brand ]
-          %ul.nav
-            - %w[ service language shard user ].each do |section|
-              - klass = (@current_section == section ? "active" : "")
-              %li{ class: klass }= link_to t("admin.#{section}.listing"), send("#{section.pluralize}_path".to_sym)
-          %ul.nav.secondary-nav.pull-right
-            %li{ style: "margin-top: 5px" }
-              .btn-group
-                - Language.all.each do |l|
-                  - btn_class = l.code.to_s == I18n.locale.to_s ? "btn-info disabled" : ""
-                  %a.btn.btn-mini{ class: btn_class, href: "?locale=#{l.code}" }
-                    = l.code
-            -if author_signed_in?
-              %li.dropdown
-                %a.dropdown-toggle{ href: "#", :"data-toggle" => "dropdown" }
-                  = current_user.email
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    = link_to t("global.sign_out"), main_app.destroy_user_session_path, method: :delete
-            - else
-=======
           %div.nav-collapse
             %ul.nav
               - %w[ service language shard user ].each do |section|
@@ -44,7 +23,7 @@
               %li{ style: "margin-top: 5px" }
                 .btn-group
                   - Language.all.each do |l|
-                    - btn_class = l.code.to_s == I18n.locale.to_s ? "disabled" : ""
+                    - btn_class = l.code.to_s == I18n.locale.to_s ? "btn-info disabled" : ""
                     %a.btn.btn-mini{ class: btn_class, href: "?locale=#{l.code}" }
                       = l.code
               -if author_signed_in?
@@ -54,9 +33,8 @@
                     %b.caret
                   %ul.dropdown-menu
                     %li
-                      = link_to t("global.sign_out"), "/users/logout/", method: :delete
+                      = link_to t("global.sign_out"), main_app.destroy_user_session_path, method: :delete
               - else
                 %li
-                  = link_to t("global.sign_in"), new_user_session_path
->>>>>>> navbar styles
+                  = link_to t("global.sign_in"), main_app.new_user_session_path
     .container= yield
