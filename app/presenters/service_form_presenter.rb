@@ -12,4 +12,8 @@ class ServiceFormPresenter < BasePresenter
   def password_auth
     form_field(:password_auth, f.check_box(:password_auth))
   end
+  
+  def social
+    form_field(:social, f.check_box(:social))
+  end
 end
