@@ -52,6 +52,7 @@ class ShardLanguagesController < SpaceController
     @shard = Shard.find_by_id(params[:shard_id]) || not_found
     shard_language = @shard.shard_languages.find(params[:id]) || not_found
 
+    shard_language.destroy
     redirect_to shard_shard_languages_path(@shard), notice: t("admin.shard_language.notice.delete_success")
   end
 

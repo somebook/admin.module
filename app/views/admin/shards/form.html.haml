@@ -5,6 +5,8 @@
       = p.errors
       = p.name
       = p.gem_name
+      - @settings.each do |setting|
+        = p.setting setting
       = p.author_features
       = p.master_features
       = p.actions back: shards_path

@@ -12,7 +12,8 @@
   - @shard.shard_languages.each do |sl|
     %tr
       %td{ class: "name" }
-        = "#{sl.language.name} (#{sl.domain})"
+        = sl.language.name
+        = "(#{sl.domain})" if @shard.settings.has_site
       %td{ class: "operations" }
         = link_to t("global.edit"), edit_shard_shard_language_path(@shard, sl), class: %w[ btn btn-mini ]
         = link_to t("global.destroy"), [@shard, sl],

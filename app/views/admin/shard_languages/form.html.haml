@@ -3,8 +3,8 @@
     %legend= @form_legend
     = present @shard_language, :shard_language_form_presenter, language_form do |p|
       = p.errors
-      = p.domain
-      = p.domain_aliases
-      = p.commentatr_token
+      = p.domain if @shard.settings.has_site
+      = p.domain_aliases if @shard.settings.has_site
+      = p.commentatr_token if @shard.settings.has_site
       = p.language_id @languages
       = p.actions back: shard_shard_languages_path

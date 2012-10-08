@@ -2,6 +2,7 @@ module Admin
 class ShardsController < SpaceController
   load_and_authorize_resource
   #TODO fix this stuff - it's broken some times
+  before_filter :load_settings, :only => [:new, :edit]
 
   def index
     @shards = Shard.all # where(user_id: current_user.id)
@@ -52,6 +53,14 @@ class ShardsController < SpaceController
     @shard.destroy
 
     redirect_to shards_path, notice: t("admin.shard.notice.delete_success")
+  end
+  
+  private
+  
+  def load_settings
+    @settings = Shard::SETTINGS_LIST.map{ |key|
+      {key => Shard.settings[key]}
+    }
   end
 
 end
