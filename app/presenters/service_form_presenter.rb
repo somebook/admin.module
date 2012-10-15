@@ -16,4 +16,8 @@ class ServiceFormPresenter < BasePresenter
   def social
     form_field(:social, f.check_box(:social))
   end
+  
+  def import_enabled
+    form_field(:import_enabled, f.check_box(:import_enabled))
+  end
 end
