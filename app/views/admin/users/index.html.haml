@@ -1,4 +1,4 @@
-%h1= t("admin.user.listing")
+%h1= t("admin.user.listing") + " (#{User.count})"
 
 = render partial: "shared/flash_messages"
 
@@ -8,6 +8,7 @@
   %tr
     %th= User.human_attribute_name(:email)
     %th= Role.model_name.human
+    %th= User.human_attribute_name(:created_at)
     %th= t("global.actions")
 
   - @users.each do |user|
@@ -22,11 +23,14 @@
           - else
             %strong= t("admin.role.#{a.role.name}")
           %br
+      %td= user.created_at.strftime("%d.%m.%Y %H:%M")
       %td
         = link_to t("global.edit"), edit_user_path(user), class: %w[ btn btn-mini ]
         = link_to t("global.destroy"), user,
           data: { confirm: t("global.delete_confirm") },
           method: :delete,
           class: %w[ btn btn-mini btn-danger ]
+
+= will_paginate(@users)
 
 = link_to t("admin.user.new"), new_user_path, class: %w[ btn btn-primary ]
